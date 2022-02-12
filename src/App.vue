@@ -1,12 +1,25 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
   <router-view/>
 </template>
 
+<script>
+import Axios from 'axios'
+
+export default {
+  mounted(){
+    const axios = Axios.create({
+      baseURL: 'https://api.tvmaze.com/',
+      timeout: 10 * 1000,
+    });
+    axios.get('/shows').then(response => this.$store.dispatch('updateAllMovies',response.data));
+    //localStorage.setItem('allMovies',response.data);
+  }
+}
+</script>
+
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
