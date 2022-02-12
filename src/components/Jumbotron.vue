@@ -3,11 +3,22 @@
   <div class="container-fluid h-100">
     <div class="row h-100">
       <div class="col-12 d-flex align-items-center parent">
-          <div class="left d-flex align-items-center ">
-            <span></span>
-            <h1 class="display-4 text-white">Unlimited <span>Movie</span>, TVs Shows, & More.</h1>
+          <div class="left d-flex flex-column justify-content-center align-items-left px-5">
+            <p id="name" class="text-start fw-bold"><span>Netflux</span></p>
+            <h1 class="display-4 text-white text-start">Unlimited <span>Movie</span>, TVs Shows, & More.</h1>
           </div>
-          <div class="right"></div>
+          <div class="right">
+            <div class="overlay d-flex">
+              <div class="overlay_content">
+                <img src="https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg">
+                <p class="movie-name text-white fw-bold">Under the dome</p>
+                <p class="text-white fw-bold">Average runtime: <span></span></p>
+                <StarRating :rating="70"/>
+                <Button :text="'watch now'"
+                        :iconSvgPath="'m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z'"/>
+              </div>
+            </div>
+          </div>
       </div> 
     </div>
   </div>
@@ -15,11 +26,17 @@
 </template>
 
 <script>
+import Button from '@/components/Button.vue'
+import StarRating from '@/components/StarRating.vue'
+
 export default {
   name: 'Jumbotron',
-  
+  components: {
+   Button,
+   StarRating
+  },
   computed:{
-    filmList(){
+    movieList(){
       return this.$store.getters.getAllMovies
     },
     randomMovieImage(){
@@ -32,22 +49,19 @@ export default {
    }
   },
   watch:{
-      filmList:function(newList){
+      movieList:function(newList){
         let randomMovie = newList[Math.floor(Math.random() * newList.length)];
         this.randomMovie = randomMovie;
         document.querySelector('.jumbotron .right').style.backgroundImage = "url("+this.randomMovie.image.original+")";
-        console.log(randomMovie)
-        console.log(randomMovie.image.original)
       },
-  }
+  },
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .jumbotron{
     height:100vh;
-    /*background-image: linear-gradient(110deg, #1f1e24 55%, transparent 45%);*/
+    font-family: 'Poppins', sans-serif;
   }
   h1 {
     font-family: 'Poppins', sans-serif;
@@ -81,11 +95,38 @@ export default {
   clip-path: polygon(40% 0, 100% 0%, 100% 100%, 0% 100%); 
   width:55%;
   cursor:pointer;
+  /*z-index:3;*/
+}
+.right .overlay {
+  position: absolute; /* Sit on top of the page content */
+  display: flex; /* Hidden by default */
+  justify-content:center;
+  align-items:center;
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition-duration: 1s;
+  background-color: rgba(0,0,0,0.6); /* Black background with opacity */
+  z-index: 2;  /*Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+.overlay_content{
+  margin-left:30%;
+}
+.overlay_content .movie-name{
+  font-size: 2rem;
+  text-transform:uppercase;
 }
 .left h1 {
   max-width:50%;
 }
-.left h1 span {
-  color: #e4d804;
+.jumbotron span {
+  color: var(--secondary-color);
+}
+#name {
+ font-size: 1.5rem;
 }
 </style>

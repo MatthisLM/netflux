@@ -1,6 +1,6 @@
 <template>
     <nav class="navbar navbar-expand-lg text-white fixed-top">
-        <a class="navbar-brand mx-3" href="#">Netflux</a>
+        <a class="navbar-brand mx-5" href="#">Netflux</a>
         <button class="navbar-toggler mx-3" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -47,5 +47,8 @@ export default {
 }
 .navbar a{
  color:white;
+}
+.nav-link:hover{
+  color: var(--secondary-color);
 }
 </style>

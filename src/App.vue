@@ -11,8 +11,12 @@ export default {
       baseURL: 'https://api.tvmaze.com/',
       timeout: 10 * 1000,
     });
-    axios.get('/shows').then(response => this.$store.dispatch('updateAllMovies',response.data));
+    //axios.get('/shows').then(response => this.$store.dispatch('updateAllMovies',response.data));
     //localStorage.setItem('allMovies',response.data);
+    axios.get('/shows').then((response) => {
+      localStorage.setItem('allMovies',JSON.stringify(response.data))
+      this.$store.dispatch('updateAllMovies',response.data)
+    });
   }
 }
 </script>
@@ -20,8 +24,12 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
+:root {
+  --secondary-color: #e4d804;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

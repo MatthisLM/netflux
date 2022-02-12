@@ -1,13 +1,11 @@
 <template>
   <div class="home">
     <Navigation/>
-    
-    <Jumbotron/>
+    <Jumbotron :randomMovie="randomMovie"/>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import Navigation from '@/components/Navigation.vue'
 import Jumbotron from '@/components/Jumbotron.vue'
 
@@ -16,6 +14,12 @@ export default {
   components: {
     Navigation,
     Jumbotron
-  }
+  },
+  computed:{
+    randomMovie(){
+      let movieList = this.$store.getters.getAllMovies
+      return movieList[Math.floor(Math.random() * movieList.length)];
+    }
+  },
 }
 </script>
