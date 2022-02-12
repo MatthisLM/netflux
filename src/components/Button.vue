@@ -3,7 +3,7 @@
     <svg v-if="iconSvgPath" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill mr-2 mb-1" viewBox="0 0 16 16">
         <path :d="iconSvgPath"/>
     </svg>
-    {{ text }}
+    <slot></slot>
     </button>
 </template>
 

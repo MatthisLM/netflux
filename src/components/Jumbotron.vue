@@ -10,12 +10,13 @@
           <div class="right">
             <div class="overlay d-flex">
               <div class="overlay_content">
-                <img src="https://static.tvmaze.com/uploads/images/medium_portrait/81/202627.jpg">
-                <p class="movie-name text-white fw-bold">Under the dome</p>
-                <p class="text-white fw-bold">Average runtime: <span></span></p>
-                <StarRating :rating="70"/>
-                <Button :text="'watch now'"
-                        :iconSvgPath="'m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z'"/>
+                <img :src="randomMovie.image.medium">
+                <p class="movie-name text-white fw-bold">{{ randomMovie.name }}</p>
+                <p class="text-white fw-bold">Average runtime: <span> {{ randomMovie.averageRuntime }} min</span></p>
+                <StarRating :rating="randomMovie.rating.average"/>
+                <Button :iconSvgPath="'m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z'">
+                        watch now
+                </Button>
               </div>
             </div>
           </div>
@@ -45,7 +46,17 @@ export default {
   },
   data(){
    return {
-    randomMovie:{}
+    randomMovie:{
+      name:'',
+      image:{
+        medium:'',
+        original:''
+      },
+      rating:{
+        average:0
+      },
+      averageRuntime: 0,
+    }
    }
   },
   watch:{
