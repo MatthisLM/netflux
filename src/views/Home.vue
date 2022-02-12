@@ -9,6 +9,7 @@
 import Navigation from '@/components/Navigation.vue'
 import Jumbotron from '@/components/Jumbotron.vue'
 
+
 export default {
   name: 'Home',
   components: {

@@ -6,9 +6,12 @@
           <div class="left d-flex flex-column justify-content-center align-items-left px-5">
             <p id="name" class="text-start fw-bold"><span>Netflux</span></p>
             <h1 class="display-4 text-white text-start">Unlimited <span>Movie</span>, TVs Shows, & More.</h1>
+            <Button class="mt-3" :width="'200px'" :iconSvgPath="'m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z'">
+                        watch now
+            </Button>
           </div>
           <div class="right">
-            <div class="overlay d-flex">
+            <div class="overlay">
               <div class="overlay_content">
                 <img :src="randomMovie.image.medium">
                 <p class="movie-name text-white fw-bold">{{ randomMovie.name }}</p>
@@ -106,24 +109,31 @@ export default {
   clip-path: polygon(40% 0, 100% 0%, 100% 100%, 0% 100%); 
   width:55%;
   cursor:pointer;
-  /*z-index:3;*/
 }
 .right .overlay {
-  position: absolute; /* Sit on top of the page content */
-  display: flex; /* Hidden by default */
+  position: absolute;
+  display: none;
+  visibility: hidden;
+  opacity: 0;
   justify-content:center;
   align-items:center;
-  width: 100%; /* Full width (cover the whole page) */
-  height: 100%; /* Full height (cover the whole page) */
+  width: 100%;
+  height: 100%; 
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  transition-duration: 1s;
-  background-color: rgba(0,0,0,0.6); /* Black background with opacity */
-  z-index: 2;  /*Specify a stack order in case you're using a different order for other elements */
-  cursor: pointer; /* Add a pointer on hover */
+  background-color: rgba(0,0,0,0.7);
+  z-index: 2; 
+  cursor: pointer;
 }
+
+.right:hover .overlay {
+  display:flex;
+  visibility: visible;
+  opacity: 1;
+}
+
 .overlay_content{
   margin-left:30%;
 }
