@@ -11,12 +11,12 @@
                   <div class="genre-wrapper">
                     <Select :options="allGenres" v-on:newValue="filter"/>
                     <div class="btn-group" role="group" aria-label="Basic example">
-                      <Button type="button" class="btn btn-primary">
+                      <Button @click="prevSlide" type="button" class="btn btn-primary">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
                           <path class="carousel-controls-icon" fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
                         </svg>
                       </Button>
-                      <Button type="button" class="btn btn-primary">
+                      <Button @click="nextSlide" type="button" class="btn btn-primary">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                           <path class="carousel-controls-icon" fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                         </svg>
@@ -25,7 +25,9 @@
                   </div>
                 </div>
                 <div class="col-xs-11 col-md-12 col-centered">
-                  <vueper-slides class="no-shadow" :visible-slides="4" :arrows="false" :bullets="false" :gap="2" :slideRatio="1/2">
+                  <vueper-slides class="no-shadow" :visible-slides="4" :arrows="true" :bullets="false" :gap="2" :slideRatio="1/2">
+                  <template #arrow-left><i></i></template>
+                  <template #arrow-right><i></i></template>
                     <vueper-slide v-for="(slide, i) in slides" :key="i" :title="slide.name" :content="slide.content">
                       <template #content>
                         <div class="vueperslide__content-wrapper" style="flex-direction: column">
@@ -107,6 +109,12 @@ export default {
         });
       });
       this.displayedMovies = moviesFound;
+    },
+    prevSlide(){
+      document.getElementsByClassName("vueperslides__arrow vueperslides__arrow--prev")[0].click();
+    },
+    nextSlide(){
+      document.getElementsByClassName("vueperslides__arrow vueperslides__arrow--next")[0].click();
     }
   },
   watch:{
