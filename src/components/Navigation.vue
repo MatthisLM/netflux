@@ -47,8 +47,9 @@ export default {
     SearchOverlay
   },
   mounted(){
-    window.scroll(function() {
-      if (document.scrollTop() > 50) {
+    window.addEventListener('scroll', function() {
+      let scroll = window.scrollY;
+      if (scroll > 50) {
         document.querySelector('.navbar').style.background = "#171d22";
       } else {
         document.querySelector('.navbar').style.background = "transparent";
