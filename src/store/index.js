@@ -7,7 +7,18 @@ export default createStore({
   getters:{
     getAllMovies(state){
         return state.allMovies;
-    }
+    },
+    getAllGenres(state){
+      let allGenres = []  
+      state.allMovies.forEach(movie => {
+        movie.genres.forEach(genre => {
+          if(!allGenres.includes(genre)){
+            allGenres.push(genre)
+          }
+        });
+      });
+      return allGenres.sort();
+    },
   },
   mutations: {
     updateAllMovies(state, newList){

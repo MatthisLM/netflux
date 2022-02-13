@@ -72,9 +72,6 @@ export default {
   text-transform: uppercase;
   z-index:2;
 }
-.navbar:hover{
-  background:#171d22;
-}
 .navbar a{
  color:white;
 }

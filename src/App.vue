@@ -14,7 +14,7 @@ export default {
     //axios.get('/shows').then(response => this.$store.dispatch('updateAllMovies',response.data));
     //localStorage.setItem('allMovies',response.data);
     axios.get('/shows').then((response) => {
-      localStorage.setItem('allMovies',JSON.stringify(response.data))
+      //localStorage.setItem('allMovies',JSON.stringify(response.data))
       this.$store.dispatch('updateAllMovies',response.data)
     });
   }
