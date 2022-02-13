@@ -13,7 +13,26 @@ export default {
   props:{
     link:String,
     iconSvgPath:String,
-    width:String
+    width:{
+        type:String,
+        default: 'auto',
+        required: false,
+    },
+    height:{
+        type:String,
+        default: 'auto',
+        required: false,
+    },
+    max_width:{
+        type:String,
+        default: 'auto',
+        required: false,
+    },
+    max_height:{
+        type:String,
+        default: 'auto',
+        required: false,
+    }
   },
 }
 </script>
