@@ -3,7 +3,7 @@
         <div class="container py-5">
             <div class="row py-5">
                 <div class="col-md-6 left-part d-flex justify-content-start flex-column">
-                    <span class="subtitle text-start d-flex">Online streaming</span>
+                    <span class="subtitle text-start d-flex align-items-center"><div style="width:75px"><hr class="line"></div>Online streaming</span>
                     <h2 class="title fw-bold text-start">Live Movie & TV Shows For Friends & Family</h2>
                     <p class="text-start my-5">Lorem ipsum dolor sit amet, consecetur adipiscing elseddo eiusmod There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration.</p>
                     <div class="live-fact-wrap d-flex">
@@ -53,6 +53,12 @@ export default {
 }
 .left-part {
     padding-right:48px;
+}
+.line {
+    color: var(--secondary-color);
+    margin-right: 16px;
+    height:3px;
+    opacity: 1;
 }
 .title {
     font-size:36px;

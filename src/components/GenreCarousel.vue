@@ -4,8 +4,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 text-start">
+                    <div style="width:20%"><hr></div>
                     <p class="sub-title fw-bold">ONLINE STREAMING</p>
-                    <h2 class="title display-5 text-white fw-bold">Movies by genre</h2>
+                    <h2 class="title display-5 text-white fw-bold">Shows by genre</h2>
                 </div>
                 <div class="col-md-8 d-flex align-items-end justify-content-end">
                   <div class="genre-wrapper">

@@ -59,7 +59,7 @@ export default {
   methods: {
     showOverlay() {
       document.querySelector("body").style.height="100%";
-      document.querySelector("body").style.overflowX="hidden";
+      document.querySelector("body").style.overflowY="hidden";
       document.getElementById("search-overlay").style.display = "flex";
     },
   },
