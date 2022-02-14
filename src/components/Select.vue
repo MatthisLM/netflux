@@ -41,14 +41,12 @@ export default {
 
 <style scoped>
 select {
-  /* Reset */
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
   border: 0;
   outline: 0;
   font: inherit;
-  /* Personalize */
   width: 20em;
   height: 3em;
   padding: 0 4em 0 1em;
@@ -77,5 +75,8 @@ select::-webkit-scrollbar {
 }
 select::-webkit-scrollbar-thumb {
   background-color: var(--secondary-color)
+}
+select:hover {
+border: 2px solid var(--secondary-color);
 }
 </style>

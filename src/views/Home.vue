@@ -3,6 +3,7 @@
     <Navigation/>
     <Jumbotron :randomMovie="randomMovie"/>
     <GenreCarousel/>
+    <Reinsurance/>
   </div>
 </template>
 
@@ -10,13 +11,15 @@
 import Navigation from '@/components/Navigation.vue'
 import Jumbotron from '@/components/Jumbotron.vue'
 import GenreCarousel from '@/components/GenreCarousel.vue'
+import Reinsurance from '@/components/Reinsurance.vue'
 
 export default {
   name: 'Home',
   components: {
     Navigation,
     Jumbotron,
-    GenreCarousel
+    GenreCarousel,
+    Reinsurance
   },
   computed:{
     randomMovie(){

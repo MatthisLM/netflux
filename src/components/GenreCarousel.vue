@@ -177,6 +177,12 @@ export default {
   padding: 8px 16px !important;
   background: #20212b;
 }
+.btn-group button:hover{
+  border: 2px solid var(--secondary-color);
+}
+.btn-group button:focus{
+  outline:0;
+}
 .carousel-controls-icon{
   stroke: white;
   fill: white;

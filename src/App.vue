@@ -11,10 +11,7 @@ export default {
       baseURL: 'https://api.tvmaze.com/',
       timeout: 10 * 1000,
     });
-    //axios.get('/shows').then(response => this.$store.dispatch('updateAllMovies',response.data));
-    //localStorage.setItem('allMovies',response.data);
     axios.get('/shows').then((response) => {
-      //localStorage.setItem('allMovies',JSON.stringify(response.data))
       this.$store.dispatch('updateAllMovies',response.data)
     });
   }
@@ -22,7 +19,7 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
 :root {
   --secondary-color: #e4d804;
@@ -48,7 +45,6 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
-
 input:focus{
     outline: none;
 }

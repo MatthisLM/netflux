@@ -48,7 +48,7 @@ export default {
         background: #12151e;
     }
     button:hover{
-        background: #e4d804;
+        background: var(--secondary-color);
         border: 2px solid var(--secondary-color);
         color: #1e1b29
     }
