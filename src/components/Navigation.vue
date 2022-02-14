@@ -43,18 +43,29 @@ import SearchOverlay from '@/components/SearchOverlay.vue'
 
 export default {
   name: 'Navigation',
+  props:{
+    alwaysOpaque: {
+      type: Boolean,
+      default: false,
+      required: false,
+    }
+  },
   components: {
     SearchOverlay
   },
   mounted(){
-    window.addEventListener('scroll', function() {
-      let scroll = window.scrollY;
-      if (scroll > 50) {
-        document.querySelector('.navbar').style.background = "#171d22";
-      } else {
-        document.querySelector('.navbar').style.background = "transparent";
-      }
-    });
+    if (this.alwaysOpaque) {
+      document.querySelector('.navbar').style.background = "#171d22";
+    } else {
+      window.addEventListener('scroll', function() {
+        let scroll = window.scrollY;
+        if (scroll > 50) {
+          document.querySelector('.navbar').style.background = "#171d22";
+        } else {
+          document.querySelector('.navbar').style.background = "transparent";
+        }
+      });
+    }
   },
   methods: {
     showOverlay() {
