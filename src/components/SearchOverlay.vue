@@ -27,6 +27,8 @@
   },
   methods:{
       hideOverlay() {
+        document.querySelector("body").style.height="auto";
+        document.querySelector("body").style.overflow="scroll";
         document.getElementById("search-overlay").style.display = "none";
     }
   }
