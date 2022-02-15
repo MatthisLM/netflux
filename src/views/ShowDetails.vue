@@ -87,7 +87,7 @@ export default {
                 this.backgroundUrl = backgroundsUrl[Math.floor(Math.random() * backgroundsUrl.length)];
                 if (!this.backgroundUrl || this.backgroundUrl.length === 0 ){
                     this.backgroundUrl = 'https://themebeyond.com/html/movflx/img/bg/movie_details_bg.jpg'
-                    this.backgroudnOverlay = false;
+                    this.backgroundOverlay = false;
                 }
             });
         }

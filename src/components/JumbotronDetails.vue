@@ -5,7 +5,7 @@
         <div class="col-3">
           <img class="w-100 main-img" :src="imageUrl">
         </div>
-        <div class="col-5 d-flex flex-column align-items-start">
+        <div class="col-5 d-flex flex-column align-items-start justify-content-center">
           <span class="text-white last-episode-date fw-bold">Last Episode: <span>{{ ended }}</span></span>
           <h1 class="text-white fw-bold">{{ name }}</h1>
           <div>
@@ -25,6 +25,27 @@
             </span>
           </div>
           <div class="summary text-start"><span class="fw-bold">{{ name }} </span>{{ summary }}</div>
+          <div class="movie-details-prime w-75">
+            <div class="container">
+              <div class="row">
+                <div class="col-2 align-items-center d-flex flex-column justify-content-center share-content">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share-fill" viewBox="0 0 16 16">
+                      <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
+                    </svg>
+                    <span class="share">Share</span>
+                </div>
+                <div class="col-8 tvmaze align-items-start d-flex flex-column justify-content-center">
+                  <h6 class="text-white fw-bold">Prime Video</h6>
+                  <p>Streaming Channels</p>
+                </div>
+                <div class="col-2 align-items-center d-flex flex-column justify-content-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="col-4"></div>
       </div>
@@ -33,12 +54,10 @@
 </template>
 
 <script>
-
-
 export default {
   name: 'JumbotronDetails',
   components: {
-   
+    
   },
   props:{
     name:String,
@@ -60,6 +79,7 @@ export default {
 <style scoped>
 .jumbotron{
   padding-top:150px;
+  padding-bottom:100px;
   background-position:center;
 }
 .main-img{
@@ -85,5 +105,53 @@ export default {
     line-height: 26px;
     color: #bcbcbc;
     margin-top:24px;
+}
+.movie-details-prime {
+    background: #242c38;
+    display: flex;
+    align-items: center;
+    max-width: 475px;
+    background: #242c38;
+    border-radius: 4px;
+    border: 1px solid #343434;
+    padding: 20px 12px;
+    margin-top: 35px;
+    flex-wrap: wrap;
+}
+.share {
+    font-size: 12px;
+    color: #bcbcbc;
+    cursor: pointer;
+}
+.share-content:hover .share{
+    color: var(--secondary-color);
+}
+.tvmaze h6{
+    font-size: 16px;
+    margin-bottom: 5px;
+    margin-left:16px;
+}
+.tvmaze p{
+    color: #bcbcbc;
+    font-size: 12px;
+    margin-bottom:0;
+    margin-left:16px;
+    margin-top:5px;
+}
+.bi-share-fill{
+    fill: white; 
+    height: 24px;
+    width: 24px;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+.bi-play-fill{
+    fill: var(--secondary-color); 
+    height: 54px;
+    width: 54px;
+    cursor: pointer;
+}
+.bi-play-fill:hover{
+    fill: white;
 }
 </style>
