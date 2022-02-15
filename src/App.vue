@@ -60,4 +60,14 @@ img {
   -o-user-drag: none;
   user-drag: none;
 }
+
+::-moz-selection { /* Code for Firefox */
+  color: #1e1b29;
+  background: var(--secondary-color);
+}
+
+::selection {
+  color: #1e1b29;
+  background: var(--secondary-color);
+}
 </style>
