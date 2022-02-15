@@ -1,7 +1,7 @@
 <template>
     <SearchOverlay/>
     <nav class="navbar navbar-expand-lg text-white fixed-top justify-content-between py-4">
-        <a class="navbar-brand mx-5" href="#">Netflux</a>
+        <a class="navbar-brand mx-5" href="/">Netflux</a>
         <button class="navbar-toggler mx-3" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -13,20 +13,6 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Explore</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
   </div>
