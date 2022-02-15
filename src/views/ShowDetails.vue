@@ -7,20 +7,23 @@
     :genres="genres"
     :ended="ended"
     :averageRuntime="averageRuntime"
-    :summary="summaryToString"
+    :summary="summary"
     :backgroudnOverlay="backgroudnOverlay"/>
+    <Episodes/>
 </template>
 
 <script>
 import Axios from 'axios' 
 import Navigation from '@/components/Navigation.vue'
 import JumbotronDetails from '@/components/JumbotronDetails.vue'
+import Episodes from '@/components/Episodes.vue'
 
 export default {
     name: 'ShowDetails',
     components: {
         Navigation,
         JumbotronDetails,
+        Episodes
     },
     data(){
         return {
@@ -37,21 +40,12 @@ export default {
     computed:{
         id(){
             return this.$route.params.id
-        },
-        summaryToString(){
-            if (this.summary){
-                let parser = new DOMParser();
-                let htmlSummary = parser.parseFromString(this.summary, "text/html").querySelector('p')
-                htmlSummary.removeChild(htmlSummary.childNodes[0])
-                return htmlSummary.textContent
-            } else {
-                return '';
-            }
         }
     },
     mounted(){
         this.getGeneralInformations();
         this.imagePicker();
+        this.getEpisodes();
     },
     methods:{
         getGeneralInformations:function(){
@@ -89,6 +83,15 @@ export default {
                     this.backgroundUrl = 'https://themebeyond.com/html/movflx/img/bg/movie_details_bg.jpg'
                     this.backgroundOverlay = false;
                 }
+            });
+        },
+        getEpisodes:function(){
+            let axios = Axios.create({
+                baseURL: 'https://api.tvmaze.com/',
+                timeout: 10 * 1000,
+            });
+            axios.get(`/shows/${this.id}/episodes`).then((response) => {
+               console.log(response.data)
             });
         }
     }

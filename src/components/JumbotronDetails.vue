@@ -7,7 +7,7 @@
         </div>
         <div class="col-5 d-flex flex-column align-items-start justify-content-center">
           <span class="text-white last-episode-date fw-bold">Last Episode: <span>{{ ended }}</span></span>
-          <h1 class="text-white fw-bold">{{ name }}</h1>
+          <h1 class="text-white fw-bold text-start">{{ name }}</h1>
           <div>
             <span v-if="genres" class="text-white genres">{{ genres.join(', ') }}</span>
             <span v-if="ended" class="text-white ended">
@@ -24,7 +24,7 @@
               {{ averageRuntime }}
             </span>
           </div>
-          <div class="summary text-start"><span class="fw-bold">{{ name }} </span>{{ summary }}</div>
+          <div v-html="summary" class="summary text-start"></div>
           <div class="movie-details-prime w-75">
             <div class="container">
               <div class="row">
