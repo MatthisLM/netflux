@@ -13,6 +13,7 @@
     :allEpisodes="allEpisodes"
     :seasonsImages="seasonsImages"
     :currentMovieName="name"/>
+    <Comments/>
 </template>
 
 <script>
@@ -20,13 +21,15 @@ import Axios from 'axios'
 import Navigation from '@/components/Navigation.vue'
 import JumbotronDetails from '@/components/JumbotronDetails.vue'
 import Episodes from '@/components/Episodes.vue'
+import Comments from '@/components/Comments.vue'
 
 export default {
     name: 'MovieDetails',
     components: {
         Navigation,
         JumbotronDetails,
-        Episodes
+        Episodes,
+        Comments
     },
     data(){
         return {
