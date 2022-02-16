@@ -52,7 +52,7 @@ export default {
     randomMovieImage(){
       return this.randomMovie.image.medium
     }
-  },
+  }, 
 }
 </script>
 

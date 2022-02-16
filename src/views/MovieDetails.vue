@@ -11,7 +11,8 @@
     :backgroudnOverlay="backgroudnOverlay"/>
     <Episodes 
     :allEpisodes="allEpisodes"
-    :seasonsImages="seasonsImages"/>
+    :seasonsImages="seasonsImages"
+    :currentMovieName="name"/>
 </template>
 
 <script>
@@ -96,7 +97,7 @@ export default {
                 timeout: 10 * 1000,
             });
             axios.get(`/shows/${this.id}/episodes`).then((response) => {
-               this.allEpisodes = response.data;
+                this.allEpisodes = response.data;
             });
         },
         getSeasonsImages:function(){

@@ -25,7 +25,7 @@
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
                                                     <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
                                                 </svg>
-                                                <div>Episode {{ episode.number }} - {{ episode.name }}</div>
+                                                <div>Episode {{ episode.number }} - {{ episode.name }} <span @click="updateModal(episode)" class="go-to-details" data-bs-toggle="modal" data-bs-target="#modal-episode-details">- See more</span></div>
                                             </div>
                                             <div class="d-flex">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
@@ -48,19 +48,26 @@
             </div>
         </div>
     </div>
+    <EpisodeDetails :episode="episodeInModal" :movieName="currentMovieName"/>
    </section>
 </template>
 
 <script>
+import EpisodeDetails from '@/components/EpisodeDetails.vue'
 export default {
   name: 'Episodes',
+  components:{
+      EpisodeDetails
+  },
   props:{
+      currentMovieName: String,
       allEpisodes: Array,
       seasonsImages: Array
   },
   data(){
       return {
-          selectedSeason: this.seasonsImages[this.seasonsImages.length - 1]
+          selectedSeason: this.seasonsImages[this.seasonsImages.length - 1],
+          episodeInModal: null,
       }
   },
   computed:{
@@ -74,7 +81,7 @@ export default {
               } else {
                   seasonCount++
                   currentSeason = [];
-                  currentSeason.push(episode)
+                  currentSeason.push(episode);
                   seasons.push(currentSeason);
               }
           })
@@ -84,6 +91,10 @@ export default {
   methods:{
       updateSeasonImage:function(id){
           this.selectedSeason = this.seasonsImages[id];
+      },
+      updateModal:function(movie){
+          console.log(movie)
+          this.episodeInModal = movie;
       }
   }
 }
@@ -163,5 +174,13 @@ export default {
        height:auto;
        position: sticky;
        top: 150px;
+   }
+   .go-to-details{
+       font-size: 12px;
+       color: var(--secondary-color);
+       cursor:pointer;
+   }
+   .go-to-details:hover{
+       color: white;
    }
 </style>
