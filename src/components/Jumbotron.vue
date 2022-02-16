@@ -10,7 +10,7 @@
                         watch now
             </Button>
           </div>
-          <div class="right">
+          <div class="right" :style="'background: url('+randomMovie.image.original+')'">
             <div class="overlay">
               <div class="overlay_content">
                 <img :src="randomMovie.image.medium">
@@ -45,33 +45,13 @@ export default {
     movieList(){
       return this.$store.getters.getAllMovies
     },
+    randomMovie(){
+      let randomMovie = this.movieList[Math.floor(Math.random() * this.movieList.length)];
+      return randomMovie
+    },
     randomMovieImage(){
       return this.randomMovie.image.medium
     }
-  },
-  data(){
-   return {
-    randomMovie:{
-      id: '',
-      name:'',
-      image:{
-        medium:'',
-        original:''
-      },
-      rating:{
-        average:0
-      },
-      averageRuntime: 0,
-    }
-   }
-  },
-  watch:{
-      movieList:function(newList){
-        let randomMovie = newList[Math.floor(Math.random() * newList.length)];
-        this.randomMovie = randomMovie;
-        console.log(randomMovie);
-        document.querySelector('.jumbotron .right').style.backgroundImage = "url("+this.randomMovie.image.original+")";
-      },
   },
 }
 </script>

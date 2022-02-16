@@ -75,7 +75,7 @@ export default {
   },
   data(){
     return {
-      displayedMovies: [],
+      displayedMovies: this.$store.getters.getAllMovies,
       renderComponent: true
     }
   },
@@ -123,7 +123,7 @@ export default {
     allGenres:function(genres){
       this.filter(genres[0]);
     }
-  }
+  },
 }
 </script>
 
