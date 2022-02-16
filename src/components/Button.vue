@@ -50,6 +50,6 @@ export default {
     button:hover{
         background: var(--secondary-color);
         border: 2px solid var(--secondary-color);
-        color: #1e1b29
+        color: #1e1b29;
     }
 </style>
