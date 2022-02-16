@@ -16,12 +16,18 @@
       </div>
       <div v-if="shows.length > 0" class="row result-list">
         <div v-for="(show, i) in shows" :key="i" class="col-md-3 my-4">
-            <img v-if="show.show.image" :src="show.show.image.original">
+            <router-link :to="{ name: 'MovieDetails', params: { id: show.show.id }}">
+                <img v-if="show.show.image" :src="show.show.image.original">
+            </router-link>
             <div v-if="!show.show.image" class="no-img d-flex">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg">
+                <router-link :to="{ name: 'MovieDetails', params: { id: show.show.id }}">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg">
+                </router-link>
             </div>
             <div class="d-flex justify-content-between w-100 my-3 fw-bold">
-                <span class="text-white show-name">{{show.show.name}}</span>
+                <router-link :to="{ name: 'MovieDetails', params: { id: show.show.id }}">
+                    <span class="text-white show-name">{{show.show.name}}</span>
+                </router-link>
                 <span v-if="show.show.ended" class="show-year">{{show.show.ended.slice(0, 4)}}</span>
             </div>
             <div class="d-flex justify-content-end w-100">
