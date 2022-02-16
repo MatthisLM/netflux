@@ -84,6 +84,8 @@ export default {
 }
 .main-img{
   border-radius: 5px;
+  position: sticky;
+  top: 150px;
 }
 .last-episode-date span{
   color: var(--secondary-color)

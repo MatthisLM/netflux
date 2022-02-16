@@ -1,7 +1,7 @@
 <template>
     <SearchOverlay/>
     <nav class="navbar navbar-expand-lg text-white fixed-top justify-content-between py-4">
-        <a class="navbar-brand mx-5" href="/">Netflux</a>
+        <router-link to="/"><p class="navbar-brand mx-5">Netflux</p></router-link>
         <button class="navbar-toggler mx-3" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

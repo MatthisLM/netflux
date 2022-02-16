@@ -17,9 +17,11 @@
                 <p class="movie-name text-white fw-bold">{{ randomMovie.name }}</p>
                 <p class="text-white fw-bold">Average runtime: <span> {{ randomMovie.averageRuntime }} min</span></p>
                 <StarRating :rating="randomMovie.rating.average"/>
-                <Button :iconSvgPath="'m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z'">
+                <router-link v-if="randomMovie.id" :to="{ name: 'MovieDetails', params: { id: randomMovie.id }}">
+                  <Button :iconSvgPath="'m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z'">
                         watch now
-                </Button>
+                  </Button>
+                </router-link>
               </div>
             </div>
           </div>
@@ -50,6 +52,7 @@ export default {
   data(){
    return {
     randomMovie:{
+      id: '',
       name:'',
       image:{
         medium:'',
@@ -66,6 +69,7 @@ export default {
       movieList:function(newList){
         let randomMovie = newList[Math.floor(Math.random() * newList.length)];
         this.randomMovie = randomMovie;
+        console.log(randomMovie);
         document.querySelector('.jumbotron .right').style.backgroundImage = "url("+this.randomMovie.image.original+")";
       },
   },

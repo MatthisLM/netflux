@@ -9,7 +9,9 @@
     :averageRuntime="averageRuntime"
     :summary="summary"
     :backgroudnOverlay="backgroudnOverlay"/>
-    <Episodes/>
+    <Episodes 
+    :allEpisodes="allEpisodes"
+    :seasonsImages="seasonsImages"/>
 </template>
 
 <script>
@@ -19,7 +21,7 @@ import JumbotronDetails from '@/components/JumbotronDetails.vue'
 import Episodes from '@/components/Episodes.vue'
 
 export default {
-    name: 'ShowDetails',
+    name: 'MovieDetails',
     components: {
         Navigation,
         JumbotronDetails,
@@ -34,7 +36,9 @@ export default {
             summary :'',
             imageUrl:'',
             backgroundUrl: 'https://themebeyond.com/html/movflx/img/bg/movie_details_bg.jpg',
-            backgroudnOverlay: true
+            backgroudnOverlay: true,
+            allEpisodes: [],
+            seasonsImages:[],
         }
     },
     computed:{
@@ -46,6 +50,7 @@ export default {
         this.getGeneralInformations();
         this.imagePicker();
         this.getEpisodes();
+        this.getSeasonsImages();
     },
     methods:{
         getGeneralInformations:function(){
@@ -91,7 +96,22 @@ export default {
                 timeout: 10 * 1000,
             });
             axios.get(`/shows/${this.id}/episodes`).then((response) => {
-               console.log(response.data)
+               this.allEpisodes = response.data;
+            });
+        },
+        getSeasonsImages:function(){
+            let axios = Axios.create({
+                baseURL: 'https://api.tvmaze.com/',
+                timeout: 10 * 1000,
+            });
+            axios.get(`/shows/${this.id}/seasons`).then((response) => {
+                let seasonsImages = [];
+                response.data.forEach((season)=>{
+                    if (season.image && season.image.original) {
+                        seasonsImages.push(season.image.original);
+                    }
+                });
+                this.seasonsImages = seasonsImages;
             });
         }
     }

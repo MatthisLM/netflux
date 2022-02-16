@@ -70,4 +70,7 @@ img {
   color: #1e1b29;
   background: var(--secondary-color);
 }
+a{
+  text-decoration:none !important;
+}
 </style>

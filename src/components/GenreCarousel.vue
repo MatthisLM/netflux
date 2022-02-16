@@ -32,9 +32,9 @@
                     <vueper-slide v-for="(slide, i) in slides" :key="i" :title="slide.name" :content="slide.content">
                       <template #content>
                         <div class="vueperslide__content-wrapper" style="flex-direction: column">
-                          <img class="slide-img" :src="slide.imgUrl" style="height:100px, width:100px">
+                          <router-link class="slide-img-link" :to="{ name: 'MovieDetails', params: { id: slide.id }}"><img class="slide-img" :src="slide.imgUrl" style="height:100px, width:100px"></router-link>
                           <div class="d-flex justify-content-between w-100 my-3 fw-bold">
-                            <span class="text-white">{{slide.name}}</span>
+                            <router-link class="slide-name-link d-flex" :to="{ name: 'MovieDetails', params: { id: slide.id }}"><span class="text-white">{{slide.name}}</span></router-link>
                             <span v-if="slide.ended" class="slide-year">{{slide.ended.slice(0, 4)}}</span>
                           </div>
                           <div class="d-flex justify-content-end w-100">
@@ -87,6 +87,7 @@ export default {
       let slides = [];
       this.displayedMovies.forEach(movie => {
         let slideInfos = {
+          id:movie.id,
           name:movie.name,
           link:movie.officialSite,
           imgUrl:movie.image.original,
@@ -188,8 +189,15 @@ export default {
   stroke: white;
   fill: white;
 }
+.slide-img-link {
+  height: 70%;
+  width: 100%;
+}
+.slide-name-link {
+  text-decoration: none;
+}
 .slide-img {
-  height:70%;
+  height: 100%;
   width: 100%;
   border-radius: 5px;
 }
