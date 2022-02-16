@@ -1,9 +1,10 @@
 <template>
-  <div class="jumbotron jumbotron-fluid" :style="'background: url('+backgroundUrl+')'">
+  <div class="jumbotron jumbotron-fluid" :style="'background: linear-gradient(0deg, rgba(23, 29, 34, 0.85), rgba(23, 29, 34, 0.85)), url('+backgroundUrl+')'">
     <div class="container">
       <div class="row">
         <div class="col-3">
-          <img class="w-100 main-img" :src="imageUrl">
+          <img v-if="imageUrl" class="w-100 main-img" :src="imageUrl">
+          <img v-else class="w-100 main-img" src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg">
         </div>
         <div class="col-5 d-flex flex-column align-items-start justify-content-center">
           <span class="text-white last-episode-date fw-bold">Last Episode: <span>{{ ended }}</span></span>

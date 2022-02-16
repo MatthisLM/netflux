@@ -16,10 +16,10 @@
       </div>
       <div v-if="shows.length > 0" class="row result-list">
         <div v-for="(show, i) in shows" :key="i" class="col-md-3 my-4">
-            <router-link :to="{ name: 'MovieDetails', params: { id: show.show.id }}">
-                <img v-if="show.show.image" :src="show.show.image.original">
+            <router-link v-if="show.show.image" :to="{ name: 'MovieDetails', params: { id: show.show.id }}">
+                <img  :src="show.show.image.original">
             </router-link>
-            <div v-if="!show.show.image" class="no-img d-flex">
+            <div v-else class="no-img d-flex">
                 <router-link :to="{ name: 'MovieDetails', params: { id: show.show.id }}">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg">
                 </router-link>
