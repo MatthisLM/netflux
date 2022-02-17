@@ -8,10 +8,10 @@
                     <ul class="comment-list">
                         <li v-for="(comment, i) in allComments" :key="i" class="py-2">
                             <div class="d-flex w-100 justify-content-between my-2">
-                                <span class="username">{{comment.comments.userName}}</span>
-                                <span v-if="comment">{{comment.comments.date.slice(0, 10)}}</span>
+                                <span v-if="comment" class="username">{{comment.comment.userName}}</span>
+                                <span v-if="comment">{{comment.comment.date.slice(0, 10)}}</span>
                             </div>
-                            <div class="d-flex text-white">{{comment.comments.content}}</div>
+                            <div v-if="comment" class="d-flex text-white text-start">{{comment.comment.content}}</div>
                         </li>
                     </ul>
             </div>
@@ -67,7 +67,7 @@ export default {
                 date: date
             }
             axios.put(`/comments/${dbId}`,{
-                "comments": [...response.data.comments, newComment],
+                "comment": [...response.data.comment, newComment],
             }).then(() => {
                 console.log(response.data)
                 this.updateComments();
@@ -75,20 +75,19 @@ export default {
                 event.target[1].value = '';
             }); 
         }).catch(()=> {
-            axios.post(`/comments/`,{showId:this.movieId,comments:{}}).then((response)=>{
+            axios.post(`/comments/`,{showId:this.movieId,comment:{}}).then((response)=>{
                 let dbId = response.data.id;
                 let date = new Date ();
                 let userName  = event.target[0].value
                 let content = event.target[1].value
                 let newComment = {
                     userName: userName,
-                    showId: this.movieId,
                     content: content,
                     date: date
                 }
                 axios.patch(`/comments/${dbId}`,{
                     "showId": response.data.showId,
-                    "comments": newComment,
+                    "comment": newComment,
                     "id": dbId
                 }).then(() => {
                     this.updateComments();
@@ -105,7 +104,6 @@ export default {
             timeout: 10 * 1000,
         });
         axios.get(`/comments?showId=${this.movieId}`).then((response) => {
-            console.log(response.data);
             this.allComments = response.data;
         }).catch(function (error) {
             return error
