@@ -1,22 +1,5 @@
 {
   "comments": [
-    {
-      "showId": "3",
-      "comment": {
-        "userName": "Matthis",
-        "content": "124",
-        "date": "2022-02-17T01:00:02.960Z"
-      },
-      "id": 1
-    },
-    {
-      "showId": "3",
-      "comment": {
-        "userName": "Matthis",
-        "content": "Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.",
-        "date": "2022-02-17T01:02:25.839Z"
-      },
-      "id": 2
-    }
+   
   ]
 }
