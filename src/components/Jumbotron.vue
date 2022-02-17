@@ -87,8 +87,8 @@ export default {
   right: 0;
   top: 0;
   background-position: bottom 20% right;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
   -webkit-clip-path: polygon(40% 0, 100% 0%, 100% 100%, 0% 100%);
   clip-path: polygon(40% 0, 100% 0%, 100% 100%, 0% 100%); 
   width:55%;
