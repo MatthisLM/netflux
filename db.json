@@ -2,33 +2,12 @@
   "comments": [
     {
       "showId": "3",
-      "comments": {
-        "userName": "a3A3",
-        "showId": "3",
-        "content": "ZEZAZ",
-        "date": "2022-02-17T00:50:37.731Z"
+      "comment": {
+        "userName": "Matthis",
+        "content": "124",
+        "date": "2022-02-17T01:00:02.960Z"
       },
       "id": 1
-    },
-    {
-      "showId": "3",
-      "comments": {
-        "userName": "Elisa",
-        "showId": "3",
-        "content": "J'ajoute un putain de commentaire",
-        "date": "2022-02-17T00:52:55.186Z"
-      },
-      "id": 2
-    },
-    {
-      "showId": "4",
-      "comments": {
-        "userName": "Matthis",
-        "showId": "4",
-        "content": "J'ajoute un commentaire sur arrow :)",
-        "date": "2022-02-17T00:53:28.966Z"
-      },
-      "id": 3
     }
   ]
 }
