@@ -13,7 +13,7 @@
     :allEpisodes="allEpisodes"
     :seasonsImages="seasonsImages"
     :currentMovieName="name"/>
-    <Comments/>
+    <Comments :movieId="id"/>
 </template>
 
 <script>

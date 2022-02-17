@@ -8,10 +8,10 @@
                     <ul class="comment-list">
                         <li v-for="(comment, i) in allComments" :key="i" class="py-2">
                             <div class="d-flex w-100 justify-content-between my-2">
-                                <span class="username">{{comment.comment.userName}}</span>
-                                <span>{{comment.comment.date.slice(0, 10)}}</span>
+                                <span class="username">{{comment.comments.userName}}</span>
+                                <span v-if="comment">{{comment.comments.date.slice(0, 10)}}</span>
                             </div>
-                            <div class="d-flex text-white">{{comment.comment.content}}</div>
+                            <div class="d-flex text-white">{{comment.comments.content}}</div>
                         </li>
                     </ul>
             </div>
@@ -36,7 +36,7 @@ import Axios from 'axios'
 export default {
   name: 'Comments',
   props:{
-      movieId: Number
+      movieId: String
   },
   data(){
       return {
@@ -47,24 +47,56 @@ export default {
         this.updateComments();
   },
   methods: {
-      postComment:function(event){       
-        let date = new Date ();
-        let userName  = event.target[0].value
-        let content = event.target[1].value
-        let comment = {
-            userName: userName,
-            movieId: this.movieId,
-            content: content,
-            date: date
-        }
+      postComment:function(event){   
         let axios = Axios.create({
             baseURL: 'http://localhost:3001/',
             timeout: 10 * 1000,
         });
-        axios.post('/comments',{comment}).then(() => {
-            this.updateComments();
-            event.target[0].value = '';
-            event.target[1].value = '';
+        axios.get(`/comments?showId=${this.movieId}`).then((response)=>{
+            if(response.data.length === 0){
+                throw ''
+            }
+            let dbId = response.data.id;
+            let date = new Date ();
+            let userName  = event.target[0].value
+            let content = event.target[1].value
+            let newComment = {
+                userName: userName,
+                movieId: this.movieId,
+                content: content,
+                date: date
+            }
+            axios.put(`/comments/${dbId}`,{
+                "comments": [...response.data.comments, newComment],
+            }).then(() => {
+                console.log(response.data)
+                this.updateComments();
+                event.target[0].value = '';
+                event.target[1].value = '';
+            }); 
+        }).catch(()=> {
+            axios.post(`/comments/`,{showId:this.movieId,comments:{}}).then((response)=>{
+                let dbId = response.data.id;
+                let date = new Date ();
+                let userName  = event.target[0].value
+                let content = event.target[1].value
+                let newComment = {
+                    userName: userName,
+                    showId: this.movieId,
+                    content: content,
+                    date: date
+                }
+                axios.patch(`/comments/${dbId}`,{
+                    "showId": response.data.showId,
+                    "comments": newComment,
+                    "id": dbId
+                }).then(() => {
+                    this.updateComments();
+                    event.target[0].value = '';
+                    event.target[1].value = '';
+                });
+            })
+            
         });
       },
       updateComments:function(){
@@ -72,8 +104,11 @@ export default {
             baseURL: 'http://localhost:3001/',
             timeout: 10 * 1000,
         });
-        axios.get('/comments').then((response) => {
-            this.allComments = response.data.reverse();
+        axios.get(`/comments?showId=${this.movieId}`).then((response) => {
+            console.log(response.data);
+            this.allComments = response.data;
+        }).catch(function (error) {
+            return error
         });
       },
   }
