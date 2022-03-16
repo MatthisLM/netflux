@@ -93,7 +93,6 @@ export default {
           this.selectedSeason = this.seasonsImages[id];
       },
       updateModal:function(movie){
-          console.log(movie)
           this.episodeInModal = movie;
       }
   }

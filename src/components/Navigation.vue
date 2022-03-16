@@ -12,7 +12,7 @@
         <a class="nav-link" href="#">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Explore</a>
+        <router-link class="nav-link" :to="{ name:'Explore'}" >Explore</router-link>
       </li>
     </ul>
   </div>

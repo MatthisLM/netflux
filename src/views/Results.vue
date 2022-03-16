@@ -41,7 +41,6 @@ export default {
       timeout: 10 * 1000,
     });
     axios.get(`/search/shows?q=:${this.currentQuery}`).then((response) => {
-      console.log(response.data)
       this.results = response.data
     });
   },
