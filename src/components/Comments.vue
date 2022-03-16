@@ -69,7 +69,6 @@ export default {
             axios.put(`/comments/${dbId}`,{
                 "comment": [...response.data.comment, newComment],
             }).then(() => {
-                console.log(response.data)
                 this.updateComments();
                 event.target[0].value = '';
                 event.target[1].value = '';
