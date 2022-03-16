@@ -10,7 +10,7 @@ npm install
 npm run serve
 ```
 
-### run the json-server server for comment section
+### run the json-server server for comment section (src folder)
 ```
 npm run db:serve
 ```
