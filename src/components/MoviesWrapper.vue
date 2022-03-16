@@ -3,10 +3,10 @@
     <div id="explore-container" class="container">
     <div class="row">
         <div class="d-flex justify-content-start flex-column align-items-start">
-            <h1 class="text-white fw-bold">Explore : {{ configuration }}</h1>
+            <h1 v-if="configuration" class="text-white fw-bold">Explore : {{ configuration }}</h1>
             <form @submit.prevent="search" class="d-flex">
-                <input @keyup="autoSearch" class="d-block search-input" :value="currentQuery" placeholder="Search here...">
-                <button type="submit" class="search-btn">
+                <input v-if="configuration ==! 'All'" @keyup="autoSearch" class="d-block search-input" :value="currentQuery" placeholder="Search here...">
+                <button v-if="configuration ==! 'All'" type="submit" class="search-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  class="bi bi-search" viewBox="0 0 16 16">
                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                     </svg>
